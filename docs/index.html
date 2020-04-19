@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.min.css">
+	<link rel="stylesheet" type="text/css" href="./code.css">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+	<script type="text/javascript" src="highlight.pack.js"></script>
+	<script type="text/javascript" src="fancybox/jquery.js"></script>
+	<script type="text/javascript" src="fancybox/jquery.fancybox.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body data-spy="scroll" data-target=".sidenav" data-offset="60">
+
+<div id="mySidenav" class="sidenav">
+<!-- <h1>Contents</h1> -->
+
+<a href="#Video">Video</a>
+<a href="#Images">Images</a>
+<a href="#mainScene">Description</a>
+
+  <div class="pos-bottom doneBy">
+    <h3 class="doneBy">Done By:</h2>
+    <ul>
+    <li>Hitesh Shetty 2017A71541H</li>
+	  <li>Souryaansh Agarwal 2017A7PS1538H</li>
+    <li>Ritwik Sharma 2017A7PS220H</li>
+    </ul>
+  </div>
+</div>
+
+<div id="main">
+
+    <h1 id="Video">Video</h1>
+    <iframe width="1000" height="530" src="images/vid.mp4"" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+  <h1 id="Images">Images</h1>
+  <a href="images/1.png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/1.png" alt="" />
+  </a>
+  <a href="images/2.png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/2.png" alt="" />
+  </a>
+  <a href="images/3n4.png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/3n4.png" alt="" />
+  </a>
+   <!--   
+  <a href="images/Screenshot (217).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (217).png" alt="" />
+  </a>
+  <a href="images/Screenshot (218).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (218).png" alt="" />
+  </a>
+  <a href="images/Screenshot (219).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (219).png" alt="" />
+  </a>
+  <a href="images/Screenshot (220).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (220).png" alt="" />
+  </a>
+  <a href="images/Screenshot (221).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (221).png" alt="" />
+  </a>
+  <a href="images/Screenshot (222).png" data-fancybox="gallery" >
+  <img class="thumbnail" src="images/Screenshot (222).png" alt="" />
+  </a>-->
+ 
+
+  <h1 id="mainScene">Description</h1>
+  <h2 id="Scene Desciption">Space bar scene :</h2>
+	<p>
+		Simple OpenGL 3D scene depicting a humble bar in the middle of space<br>
+    <br>This scence has various objects like:
+    <br><b>Chairs,Tables,and glasses
+    <br>Stars and some (dynamic) glowing fireflies(something like it)
+    <br>and a room with some decorations to put it all together</b><br><br>
+    Along with OpenGL, the library GLUT was used to create the window and set the projection and configure the camera.
+        GLUT is responsible for the 3D pipelining which consists of clipping, projection( perspective ), normalizing and transformation 
+        to viewport coordinates.<br><br>
+		<b>main.cpp</b> creates the 3D scene. It doesn't use separate header files to add the objects to the 3D scene rather all the objects are created using functions within main.cpp applying openGl functions like glTranslated, glRotatef and glScaled. <br>
+        <br>It also defines the functions to handle the keyboard events. There are variables whose values are changed based on the keys pressed and each time the main function is run on loop with the updated variables for the movement and 
+        rotation of the camera. Thus, providing a first-person view of the Space bar.<br>
+        The camera actions that have been implemented using the keyboard (<b>up</b> <b>down</b> <b>left</b> <b>right</b> for rotation about an axis) are: <b>To rotate up down left and right.</b> 
+        <br>Also, <b>Movement in x,y and z axis</b> can be done using the <b>'a', 'd', '\'', '\/','w','s'</b> keys.
+        <br>A code snippet for making a vase is given below
+		<pre>
+            <code>
+
+                void DrawVase(float x, float y, float z, float size){
+
+                  makeCylinder(0, 7.75, 8, 7);
+                  //Back side
+                  glBegin( GL_QUADS );
+                  glColor3f(.0f, .7f, .0f);//NL turn it back to normal
+                  glVertex3f(x-size,y,z-size);
+                  glVertex3f(x+size,y,z-size); 
+                  glVertex3f(x+size+0.2,y+size*3,z-size-0.2);
+                  glVertex3f(x-size-0.2,y+size*3,z-size-0.2);
+                  glEnd();
+
+                  //Front side
+                  glBegin( GL_QUADS );
+                  glVertex3f(x+size,y,z+size);
+                  glVertex3f(x+size+0.2,y+size*3,z+size+0.2);
+                  glVertex3f(x-size-0.2,y+size*3,z+size+0.2);
+                  glVertex3f(x-size,y,z+size);
+                  glEnd();
+
+                  //Right side
+                  glBegin( GL_QUADS );
+                  glVertex3f(x+size,y,z-size);
+                  glVertex3f(x+size,y,z+size);
+                  glVertex3f(x+size+0.2,y+size*3,z+size+0.2); 
+                  glVertex3f(x+size+0.2,y+size*3,z-size-0.2);
+                  glEnd();
+
+                  //Left side
+                  glBegin( GL_QUADS );
+                  glVertex3f(x-size,y,z-size);
+                  glVertex3f(x-size-0.2,y+size*3,z-size-0.2);
+                  glVertex3f(x-size-0.2,y+size*3,z+size+0.2); 
+                  glVertex3f(x-size,y,z+size);
+                  glEnd();
+                  
+                  glColor3f(.7f, .7f, .7f);//NL turn it back to normal
+
+                }
+            </code>
+        </pre>
+	</p>
+    <div>
+        <p>
+            <a target="_blank" href="https://github.com/shettyhitesh10/CompGA2">See full code</a>
+        </p>
+    </div>
+</div>
+
+
+
+</body>
+</html>
