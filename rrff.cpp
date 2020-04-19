@@ -1,11 +1,5 @@
-// #include<iostream>
-// #include<fstream>
-// #include<limits.h>
-// #include<string.h>
-// #include<queue>
 #include<bits/stdc++.h>
-#define MAX_NODES 10000
-
+#define MAX_NODES 500
 
 using namespace std;
 
@@ -59,8 +53,8 @@ int fordFulkerson(int G[][MAX_NODES], int V, int s, int t) {
     int f=0;
     ///making the residual graph Gf
     int Gf[MAX_NODES][MAX_NODES];
-    for(int i=0; i<MAX_NODES; i++)
-        for(int j=0; j<MAX_NODES; j++)
+    for(int i=0; i<V+1; i++)
+        for(int j=0; j<V+1; j++)
             Gf[i][j]=G[i][j];
             
     /// Let P be a simple s-t path in Gf
@@ -79,19 +73,19 @@ int fordFulkerson(int G[][MAX_NODES], int V, int s, int t) {
 int main() {
     
     int V,n;
-    int G[MAX_NODES][MAX_NODES];
-    for(int i = 0; i < MAX_NODES; i++)
-        for(int j = 0; j < MAX_NODES; j++)
-            G[i][j]=0;
-    int s,t;
     
     ///cin input part. To enter input manually. comment the file stream part and uncomment the cin input part
     cout<<"Please enter the number of vertices and edges \nthen the paths(first vertex is 1)\n";
     cin >> V >> n;
-    
-    
 
-    //cin>>s>>t;
+    int G[MAX_NODES][MAX_NODES];
+    for(int i = 0; i < V+2; i++)
+        for(int j = 0; j < V+2; j++)//V+1 should be enough V+2 is just for testing
+            G[i][j]=0;
+    int s,t;
+    
+    
+    
     s=0;
     t=V+1;
 
@@ -179,6 +173,23 @@ TEST CASES for task 3:(number : anwer)
 4 10 
 5 10 
 
+//3
+20 20
+1 11
+2 12
+3 13
+4 14
+6 15
+6 16
+7 17
+8 18
+9 19
+10 20
+1 12
+1 13
+1 14
+1 15
+1 16
 
 TEST CASES for task 1:(number : anwer)
 //1: 5
