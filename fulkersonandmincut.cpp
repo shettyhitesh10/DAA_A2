@@ -121,7 +121,7 @@ int main() {
             ///if given edge has one node visited another unvisited prints it
             if(visit[i] && !visit[j] && G[i][j]!=0){
 
-                sumMINst+=G[i][j];cout<<i<<" - "<<j<<"\n";
+                sumMINst+=G[i][j];cout<<i+1<<" - "<<j+1<<"\n";
 
                 }
             }
