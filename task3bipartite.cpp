@@ -83,9 +83,9 @@ int main() {
 	
     ///cin input part. To enter input manually. comment the file stream part and uncomment the cin input part
 	cin >> V >> n;
-	//cin>>s>>t;
-    s=0;
-    t=V+1;
+	cin>>s>>t;
+    //s=0;
+    //t=V+1;
 
     vector<vector<int> > G(V+2,vector<int> (V+2));
 	
@@ -102,7 +102,7 @@ int main() {
 
     for(int i=0; i<n; i++) {
         int a,b,c;
-        cin>>a>>b;
+        cin>>a>>b>>c;
         G[a][b] = 1;
     }
     
