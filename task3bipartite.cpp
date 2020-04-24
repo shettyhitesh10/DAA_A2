@@ -89,21 +89,22 @@ int main() {
 
     vector<vector<int> > G(V+2,vector<int> (V+2));
 	
-    //connecting s and t to the bipartite graph
-
-    for(int i=1; i<=V/2; i++) {
+    //connecting s and t to the bipartite graph alternate method assuming the sides have equal number of nodes.
+    /*for(int i=1; i<=V/2; i++) {
         G[0][i] = 1;
         G[ceil(V/2.0)+i][V+1] = 1;
-
-    }
-
+ 
     G[(V/2)+1][V+1] = 1;
-    //NOTE : Odd input nodes results in uneven distribution (k,k+1 type)
+    } //NOTE : Odd input nodes results in uneven distribution (k,k+1 type)
+    */
+
 
     for(int i=0; i<n; i++) {
         int a,b,c;
         cin>>a>>b>>c;
         G[a][b] = 1;
+        G[s][a] = 1;//connecting source to left side of bipartite
+        G[b][t] = 1;//connecting right side of bipartite with sink : V+1
     }
     
     ///file stream part. To enter input through file. uncomment the file stream part and comment the cin input part
